@@ -21,16 +21,23 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "strict": true,
+    "strict": false,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "ES2019",
+    "target": "es5",
     "paths": {
       "~/*": [
         "./src/*"
       ]
-    }
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "jsx": "preserve"
   },
   "include": [
     ".projenrc.js",
@@ -39,7 +46,7 @@
     ".eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
+    "**/**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
     ".projenrc.ts",

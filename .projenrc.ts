@@ -1,4 +1,8 @@
 import { typescript } from "projen";
+import {
+  TypeScriptJsxMode,
+  TypeScriptModuleResolution,
+} from "projen/lib/javascript";
 const project = new typescript.TypeScriptProject({
   defaultReleaseBranch: "main",
   name: "t3-app-projen",
@@ -57,16 +61,31 @@ const project = new typescript.TypeScriptProject({
       paths: {
         "~/*": ["./src/*"],
       },
+      allowJs: true,
+      skipLibCheck: true,
+      forceConsistentCasingInFileNames: true,
+      noEmit: true,
+      // incremental: true,
+      strict: false,
+      target: "es5",
+      moduleResolution: TypeScriptModuleResolution.NODE,
+      isolatedModules: true,
+      jsx: TypeScriptJsxMode.PRESERVE,
+      rootDir: undefined,
     },
     include: [
       ".eslintrc.cjs",
       "next-env.d.ts",
       "**/*.ts",
-      "**/*.tsx",
+      "**/**/*.tsx",
       "**/*.cjs",
       "**/*.mjs",
     ],
   },
+  // eslintOptions: {
+  //   dirs: ["src"],
+  //   ignorePatterns: ["_app.tsx"],
+  // },
 });
 project.tsconfig!.file.readonly = false;
 project.synth();
