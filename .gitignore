@@ -30,6 +30,17 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+/.pnp
+.pnp.js
+/prisma/db.sqlite
+/prisma/db.sqlite-journal
+/.next/
+/out/
+.DS_Store
+*.pem
+.env
+.env*.local
+.vercel
 !/.projenrc.js
 /test-reports/
 junit.xml

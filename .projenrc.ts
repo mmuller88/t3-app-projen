@@ -4,6 +4,10 @@ const project = new typescript.TypeScriptProject({
   name: "t3-app-projen",
   projenrcTs: true,
 
+  authorUrl: "https://martinmueller.dev",
+  authorName: "Martin Müller",
+  authorEmail: "office@martinmueller.dev",
+
   prettier: true,
 
   gitignore: [
@@ -20,9 +24,49 @@ const project = new typescript.TypeScriptProject({
     ".env*.local",
     ".vercel",
   ],
-  // deps: [],                /* Runtime dependencies of this module. */
+
+  deps: [
+    "@prisma/client",
+    "@tanstack/react-query",
+    "@trpc/client",
+    "@trpc/next",
+    "@trpc/react-query",
+    "@trpc/server",
+    "next",
+    "react",
+    "react-dom",
+    "superjson",
+    "zod",
+  ],
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  devDeps: [
+    "@types/prettier",
+    "@types/react",
+    "@types/react-dom",
+    "autoprefixer",
+    "eslint",
+    "eslint-config-next",
+    "postcss",
+    "prettier-plugin-tailwindcss",
+    "prisma",
+    "tailwindcss",
+  ],
+  tsconfig: {
+    compilerOptions: {
+      lib: ["dom", "dom.iterable", "esnext"],
+      paths: {
+        "~/*": ["./src/*"],
+      },
+    },
+    include: [
+      ".eslintrc.cjs",
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.cjs",
+      "**/*.mjs",
+    ],
+  },
 });
+project.tsconfig!.file.readonly = false;
 project.synth();
